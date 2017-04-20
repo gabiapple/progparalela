@@ -1,0 +1,97 @@
+Multiplicação ingenua sem nenhuma otimização n = 31
+Tempo = 0.010752 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 32
+Tempo = 0.009831 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 96
+Tempo = 0.266447 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 97
+Tempo = 0.272405 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 127
+Tempo = 0.600255 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 128
+Tempo = 0.634358 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 129
+Tempo = 0.628711 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 191
+Tempo = 2.064873 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 192
+Tempo = 2.134997 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 229
+Tempo = 3.593440 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 255
+Tempo = 4.950075 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 256
+Tempo = 5.113400 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 257
+Tempo = 5.044559 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 319
+Tempo = 9.761931 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 320
+Tempo = 9.876599 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 321
+Tempo = 9.881552 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 417
+Tempo = 22.523187 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 479
+Tempo = 33.600167 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 480
+Tempo = 33.498757 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 511
+Tempo = 40.289673 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 512
+Tempo = 42.762026 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 639
+Tempo = 79.256063 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 640
+Tempo = 81.741603 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 767
+Tempo = 136.708130 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 768
+Tempo = 143.495887 segundos
+
+Multiplicação ingenua sem nenhuma otimização n = 769
+Tempo = 137.807466 segundos
+
+==10039== 
+--10039-- warning: L3 cache found, using its data for the LL simulation.
+==10039== 
+==10039== I   refs:      69,792,606,882
+==10039== I1  misses:             1,014
+==10039== LLi misses:             1,006
+==10039== I1  miss rate:           0.00%
+==10039== LLi miss rate:           0.00%
+==10039== 
+==10039== D   refs:      40,302,885,793  (37,344,036,819 rd   + 2,958,848,974 wr)
+==10039== D1  misses:     2,716,463,985  ( 2,711,352,925 rd   +     5,111,060 wr)
+==10039== LLd misses:       214,517,979  (   213,140,487 rd   +     1,377,492 wr)
+==10039== D1  miss rate:            6.7% (           7.2%     +           0.1%  )
+==10039== LLd miss rate:            0.5% (           0.5%     +           0.0%  )
+==10039== 
+==10039== LL refs:        2,716,464,999  ( 2,711,353,939 rd   +     5,111,060 wr)
+==10039== LL misses:        214,518,985  (   213,141,493 rd   +     1,377,492 wr)
+==10039== LL miss rate:             0.1% (           0.1%     +           0.0%  )
+

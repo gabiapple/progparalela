@@ -1,0 +1,147 @@
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+
+const char* dgemm_desc = "Simple blocked dgemm";
+
+#if !defined(BLOCK_SIZE)
+#define BLOCK_SIZE 2
+#endif
+
+#define min(a,b) (((a)<(b))?(a):(b))
+
+void transp(int n, double *B)
+{
+	int aux=0;
+	for(int i = 0; i< n*n; i+=(n+1))
+	{
+		for(int j=i, k=i; k<(i+n) && k <n*n && j < n*n; j+=n,k++)
+		{
+			aux = B[k];
+			B[k] = B[j];
+			B[j] = aux;
+		}
+	}
+}
+
+void fill (double* p, int n)
+{
+  for (int i = 0; i < n; ++i)
+    p[i] = i+1; // Uniformly distributed over [-1, 1]
+}
+
+void fill0 (double *p, int n){
+	for(int i=0; i<n;i++){
+		p[i]=0;
+	}
+}
+
+void print(double *C, int n){
+	for(int i=0; i < n; i++){
+		for(int j=0; j < n; j++){
+			//printf("C(%d,%d) = C(%d) = %d ", i,j, i+j*n, C[i+j*n]);		
+			printf("%3lf ", C[i+j*n]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+}
+
+
+/* This auxiliary subroutine performs a smaller dgemm operation
+ *  C := C + A * B
+ * where C is M-by-N, A is M-by-K, and B is K-by-N. */
+static void do_block (int lda, int M, int N, int K, double* A, double* B, double* C)
+{
+	/* For each row i of A */
+	for (int j = 0; j < N; ++j) {		
+		for (int i = 0; i < M; ++i){
+		/* For each column j of B */ 
+		/* Compute C(i,j) */
+			double cij = C[i+j*lda];
+			//printf("c(%d,%d) = %lf ", i,j, cij);
+			for (int k = 0; k < K; ++k){
+			//	printf("+ %lf * %lf", A[k+i*lda] , B[k+j*lda]);
+				cij += A[i+k*lda] * B[k+j*lda];
+			}
+			//printf(" = %lf\n", cij);
+	      	C[i+j*lda] = cij;
+    	}
+	}
+	//printf("\n");
+}
+
+/* This routine performs a dgemm operation
+ *  C := C + A * B
+ * where A, B, and C are lda-by-lda matrices stored in column-major format. 
+ * On exit, A and B maintain their input values. */  
+void square_dgemm (int lda, double* A, double* B, double* C)
+{
+	/* For each block-row of A */ 
+	for (int i = 0; i < lda; i += BLOCK_SIZE)
+		/* For each block-column of B */
+		for (int j = 0; j < lda; j += BLOCK_SIZE)
+			/* Accumulate block dgemms into block of C */
+			for (int k = 0; k < lda; k += BLOCK_SIZE)
+			{
+			/* Correct block dimensions if block "goes off edge of" the matrix */
+				int M = min (BLOCK_SIZE, lda-i);
+				int N = min (BLOCK_SIZE, lda-j);
+				int K = min (BLOCK_SIZE, lda-k);
+	
+		//		printf("Bloco M=%d, N=%d, K=%d, i+k*lda=%d, k+j*lda=%d, i+j*lda=%d\n", M,N,K, i+k*lda, k+j*lda, i+j*lda);
+			//	printf("i:%d, j:%d, k:%d\n", i,j,k);
+				/* Perform individual block dgemm */
+				do_block(lda, M, N, K, A + i + k*lda, B + k + j*lda, C + i + j*lda);
+      }
+}
+
+int main(){
+	int i,j,tmili, nmax;
+ 	int test_sizes[] = { 31, 32, 96, 97, 127, 128, 129, 191, 192, 229, 255, 256, 257,
+    319, 320, 321, 417, 479, 480, 511, 512, 639, 640, 767, 768, 769 };
+	//int test_sizes[] = {4};
+	int nsizes = sizeof(test_sizes)/sizeof(test_sizes[0]);
+	nmax = test_sizes[nsizes-1];
+
+	double* buf = NULL;
+	buf = (double*) malloc (3 * nmax * nmax * sizeof(double));
+
+		printf("Multiplicação com for(j..) mais externo\n");
+//		printf("Mutiplicação coluna por coluna com A transposta\n");
+
+	for(int i = 0; i < nsizes; i++)
+	{	
+		int n = test_sizes[i];
+	
+		printf("N = %d\n", n);
+
+		double* A = buf + 0;
+		double* B = A + nmax*nmax;
+		double* C = B + nmax*nmax;
+
+		clock_t t1,t2;
+	
+		fill(A,n*n);
+		fill(B,n*n);
+		fill0(C,n*n);
+	/*
+		transp(nmax,A);
+				
+		printf("A:\n");
+		print(A, n);	
+		printf("\nB:\n");
+		print(B, n);*/
+		//transp(nmax,B);
+		t1 = clock();  
+		square_dgemm (n, A, B, C);
+		t2=clock();
+		printf("Tempo = %lf segundos\n\n", (((double)t2 - (double)t1) / (double)CLOCKS_PER_SEC));	
+		//print(C,n);
+
+	}
+	free(buf);
+
+	return 0;
+}
+

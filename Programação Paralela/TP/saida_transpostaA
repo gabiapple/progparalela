@@ -1,0 +1,179 @@
+Mutiplicação coluna por coluna com A transposta
+n=31
+Tempo = 0.000000 segundos
+
+n=32
+Tempo = 0.000000 segundos
+
+n=96
+Tempo = 0.010000 segundos
+
+n=97
+Tempo = 0.000000 segundos
+
+n=127
+Tempo = 0.010000 segundos
+
+n=128
+Tempo = 0.010000 segundos
+
+n=129
+Tempo = 0.010000 segundos
+
+n=191
+Tempo = 0.030000 segundos
+
+n=192
+Tempo = 0.030000 segundos
+
+n=229
+Tempo = 0.040000 segundos
+
+n=255
+Tempo = 0.060000 segundos
+
+n=256
+Tempo = 0.070000 segundos
+
+n=257
+Tempo = 0.070000 segundos
+
+n=319
+Tempo = 0.120000 segundos
+
+n=320
+Tempo = 0.130000 segundos
+
+n=321
+Tempo = 0.100000 segundos
+
+n=417
+Tempo = 0.210000 segundos
+
+n=479
+Tempo = 0.310000 segundos
+
+n=480
+Tempo = 0.320000 segundos
+
+n=511
+Tempo = 0.380000 segundos
+
+n=512
+Tempo = 0.390000 segundos
+
+n=639
+Tempo = 0.750000 segundos
+
+n=640
+Tempo = 0.760000 segundos
+
+n=767
+Tempo = 1.300000 segundos
+
+n=768
+Tempo = 1.310000 segundos
+
+n=769
+Tempo = 1.310000 segundos
+
+n=800
+Tempo = 1.470000 segundos
+
+n=801
+Tempo = 1.480000 segundos
+
+n=832
+Tempo = 1.660000 segundos
+
+n=833
+Tempo = 1.660000 segundos
+
+n=864
+Tempo = 1.860000 segundos
+
+n=865
+Tempo = 1.860000 segundos
+
+n=896
+Tempo = 2.070000 segundos
+
+n=897
+Tempo = 2.070000 segundos
+
+n=928
+Tempo = 2.310000 segundos
+
+n=929
+Tempo = 2.310000 segundos
+
+n=960
+Tempo = 2.540000 segundos
+
+n=961
+Tempo = 2.560000 segundos
+
+n=992
+Tempo = 2.810000 segundos
+
+n=993
+Tempo = 2.820000 segundos
+
+n=1024
+Tempo = 3.130000 segundos
+
+n=1025
+Tempo = 3.100000 segundos
+
+n=1056
+Tempo = 3.390000 segundos
+
+n=1057
+Tempo = 3.410000 segundos
+
+n=1088
+Tempo = 3.700000 segundos
+
+n=1089
+Tempo = 3.710000 segundos
+
+Command being timed: "./transpostaA"
+	User time (seconds): 58.54
+	System time (seconds): 0.00
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:58.57
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 28208
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1484
+	Voluntary context switches: 1
+	Involuntary context switches: 48
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+
+Performance counter stats for './transpostaA':
+
+      58692,691200      task-clock (msec)         #    1,000 CPUs utilized          
+               273      context-switches          #    0,005 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+               653      page-faults               #    0,011 K/sec                  
+   186.292.905.167      cycles                    #    3,174 GHz                    
+   <not supported>      stalled-cycles-frontend  
+   <not supported>      stalled-cycles-backend   
+   565.938.465.750      instructions              #    3,04  insns per cycle        
+    20.812.320.967      branches                  #  354,598 M/sec                  
+        23.059.860      branch-misses             #    0,11% of all branches        
+
+      58,717126332 seconds time elapsed
+
+

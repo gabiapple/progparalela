@@ -1,0 +1,152 @@
+        -:    0:Source:testando_blocked.c
+        -:    0:Graph:testando_blocked.gcno
+        -:    0:Data:testando_blocked.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <stdio.h>
+        -:    2:#include <time.h>
+        -:    3:#include <stdlib.h>
+        -:    4:
+        -:    5:const char* dgemm_desc = "Simple blocked dgemm";
+        -:    6:
+        -:    7:#if !defined(BLOCK_SIZE)
+        -:    8:#define BLOCK_SIZE 2
+        -:    9:#endif
+        -:   10:
+        -:   11:#define min(a,b) (((a)<(b))?(a):(b))
+        -:   12:
+    #####:   13:void transp(int n, double *B)
+        -:   14:{
+    #####:   15:	int aux=0;
+    #####:   16:	for(int i = 0; i< n*n; i+=(n+1))
+        -:   17:	{
+    #####:   18:		for(int j=i, k=i; k<(i+n) && k <n*n && j < n*n; j+=n,k++)
+        -:   19:		{
+    #####:   20:			aux = B[k];
+    #####:   21:			B[k] = B[j];
+    #####:   22:			B[j] = aux;
+        -:   23:		}
+        -:   24:	}
+    #####:   25:}
+        -:   26:
+       52:   27:void fill (double* p, int n)
+        -:   28:{
+  8887556:   29:  for (int i = 0; i < n; ++i)
+  8887504:   30:    p[i] = i+1; // Uniformly distributed over [-1, 1]
+       52:   31:}
+        -:   32:
+       26:   33:void fill0 (double *p, int n){
+  4443778:   34:	for(int i=0; i<n;i++){
+  4443752:   35:		p[i]=0;
+        -:   36:	}
+       26:   37:}
+        -:   38:
+    #####:   39:void print(double *C, int n){
+    #####:   40:	for(int i=0; i < n; i++){
+    #####:   41:		for(int j=0; j < n; j++){
+        -:   42:			//printf("C(%d,%d) = C(%d) = %d ", i,j, i+j*n, C[i+j*n]);		
+    #####:   43:			printf("%3lf ", C[i+j*n]);
+        -:   44:		}
+    #####:   45:		printf("\n");
+        -:   46:	}
+    #####:   47:	printf("\n");
+    #####:   48:}
+        -:   49:
+        -:   50:
+        -:   51:/* This auxiliary subroutine performs a smaller dgemm operation
+        -:   52: *  C := C + A * B
+        -:   53: * where C is M-by-N, A is M-by-K, and B is K-by-N. */
+329212561:   54:static void do_block (int lda, int M, int N, int K, double* A, double* B, double* C)
+        -:   55:{
+        -:   56:	/* For each row i of A */
+986954820:   57:	for (int i = 0; i < M; ++i){
+        -:   58:		/* For each column j of B */ 
+1971863828:   59:		for (int j = 0; j < N; ++j) {
+        -:   60:		/* Compute C(i,j) */
+1314121569:   61:			double cij = C[i+j*lda];
+        -:   62:			//printf("c(%d,%d) = %lf ", i,j, cij);
+3939644347:   63:			for (int k = 0; k < K; ++k){
+        -:   64:			//	printf("+ %lf * %lf", A[k+i*lda] , B[k+j*lda]);
+2625522778:   65:				cij += A[i+k*lda] * B[k+j*lda];
+        -:   66:			}
+        -:   67:			//printf(" = %lf\n", cij);
+1314121569:   68:	      	C[i+j*lda] = cij;
+        -:   69:    	}
+        -:   70:	}
+        -:   71:	//printf("\n");
+329212561:   72:}
+        -:   73:
+        -:   74:/* This routine performs a dgemm operation
+        -:   75: *  C := C + A * B
+        -:   76: * where A, B, and C are lda-by-lda matrices stored in column-major format. 
+        -:   77: * On exit, A and B maintain their input values. */  
+       26:   78:void square_dgemm (int lda, double* A, double* B, double* C)
+        -:   79:{
+        -:   80:	/* For each block-row of A */ 
+     4515:   81:	for (int i = 0; i < lda; i += BLOCK_SIZE)
+        -:   82:		/* For each block-column of B */
+  1118200:   83:		for (int j = 0; j < lda; j += BLOCK_SIZE)
+        -:   84:			/* Accumulate block dgemms into block of C */
+330326272:   85:			for (int k = 0; k < lda; k += BLOCK_SIZE)
+        -:   86:			{
+        -:   87:			/* Correct block dimensions if block "goes off edge of" the matrix */
+329212561:   88:				int M = min (BLOCK_SIZE, lda-i);
+329212561:   89:				int N = min (BLOCK_SIZE, lda-j);
+329212561:   90:				int K = min (BLOCK_SIZE, lda-k);
+        -:   91:	
+        -:   92:		//		printf("Bloco M=%d, N=%d, K=%d, i+k*lda=%d, k+j*lda=%d, i+j*lda=%d\n", M,N,K, i+k*lda, k+j*lda, i+j*lda);
+        -:   93:			//	printf("i:%d, j:%d, k:%d\n", i,j,k);
+        -:   94:				/* Perform individual block dgemm */
+329212561:   95:				do_block(lda, M, N, K, A + i + k*lda, B + k + j*lda, C + i + j*lda);
+        -:   96:      }
+       26:   97:}
+        -:   98:
+        1:   99:int main(){
+        -:  100:	int i,j,tmili, nmax;
+        1:  101: 	int test_sizes[] = { 31, 32, 96, 97, 127, 128, 129, 191, 192, 229, 255, 256, 257,
+        -:  102:    319, 320, 321, 417, 479, 480, 511, 512, 639, 640, 767, 768, 769 };
+        -:  103:	//int test_sizes[] = {4};
+        1:  104:	int nsizes = sizeof(test_sizes)/sizeof(test_sizes[0]);
+        1:  105:	nmax = test_sizes[nsizes-1];
+        -:  106:
+        1:  107:	double* buf = NULL;
+        1:  108:	buf = (double*) malloc (3 * nmax * nmax * sizeof(double));
+        -:  109:
+        1:  110:		printf("Multiplicação sem nenhuma otimização\n");
+        -:  111://		printf("Mutiplicação coluna por coluna com A transposta\n");
+        -:  112:
+       27:  113:	for(int i = 0; i < nsizes; i++)
+        -:  114:	{	
+       26:  115:		int n = test_sizes[i];
+        -:  116:	
+       26:  117:		printf("N = %d\n", n);
+        -:  118:
+       26:  119:		double* A = buf + 0;
+       26:  120:		double* B = A + nmax*nmax;
+       26:  121:		double* C = B + nmax*nmax;
+        -:  122:
+        -:  123:		clock_t t1,t2;
+        -:  124:	
+       26:  125:		fill(A,n*n);
+       26:  126:		fill(B,n*n);
+       26:  127:		fill0(C,n*n);
+        -:  128:	/*
+        -:  129:		transp(nmax,A);
+        -:  130:				
+        -:  131:		printf("A:\n");
+        -:  132:		print(A, n);	
+        -:  133:		printf("\nB:\n");
+        -:  134:		print(B, n);*/
+        -:  135:		//transp(nmax,B);
+       26:  136:		t1 = clock();  
+       26:  137:		square_dgemm (n, A, B, C);
+       26:  138:		t2=clock();
+       26:  139:		printf("Tempo = %lf segundos\n\n", (((double)t2 - (double)t1) / (double)CLOCKS_PER_SEC));	
+        -:  140:		//print(C,n);
+        -:  141:
+        -:  142:	}
+        1:  143:	free(buf);
+        -:  144:
+        1:  145:	return 0;
+        -:  146:}
+        -:  147:

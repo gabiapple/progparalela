@@ -1,0 +1,29 @@
+    1  ssh gaby@200.131.37.129 -p 2200
+    2  cd Dropbox/CEFET/
+    3  cd Programação\ Paralela/
+    4  ls
+    5  cd TP/
+    6  LS
+    7  clear
+    8  ls
+    9  clear
+   10  history 
+   11  scp dgemm-naive.c main.c gaby@200.131.37.129 -p 2200
+   12  scp dgemm-naive.c main.c gaby@200.131.37.129 -p 2200 /home/gaby/TP
+   13  scp dgemm-naive.c main.c gaby@200.131.37.129 -p 2200 /home/gaby
+   14  scp dgemm-naive.c main.c gaby@200.131.37.129 -p 2200:/home/gaby
+   15  scp dgemm-naive.c main.c gaby@200.131.37.129:/home/gaby -p 2200
+   16  scp -p 2200 dgemm-naive.c main.c gaby@200.131.37.129:/home/gaby
+   17  scp -P 2200 dgemm-naive.c main.c gaby@200.131.37.129:/home/gaby
+   18  ls
+   19  ssh gaby@200.131.129 -p 2200
+   20  ssh gaby@200.131.37.129 -p 2200
+   21  history
+   22  scp -P 2200 dgemm-blocked.c benchmark.c gaby@200.131.37.129:/home/gaby/TP
+   23  scp -P 2200 dgemm-blocked.c benchmark.c gaby@200.131.37.129:/home/gaby/TPMULT
+   24  ls
+   25  ls | grep '*.c'
+   26  ls | grep "*.c"
+   27  scp -P 2200 dgemm-blas.c gaby@200.131.37.129:/home/gaby/TPMULT
+   28  clear
+   29  history >> HISTORICO_DE_COMANDOS

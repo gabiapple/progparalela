@@ -1,0 +1,33 @@
+
+Analyzing loop at test1.c:11
+
+
+Vectorizing loop at test1.c:11
+
+test1.c:11: note: create runtime check for data references *_10 and *_7
+test1.c:11: note: created 1 versioning for alias checks.
+
+test1.c:11: note: LOOP VECTORIZED.
+test1.c:7: note: vectorized 1 loops in function.
+
+Analyzing loop at test1.c:11
+
+
+Vectorizing loop at test1.c:11
+
+test1.c:11: note: create runtime check for data references *_10 and *_7
+test1.c:11: note: created 1 versioning for alias checks.
+
+test1.c:11: note: LOOP VECTORIZED.
+test1.c:7: note: vectorized 1 loops in function.
+
+Analyzing loop at test1.c:11
+
+
+Vectorizing loop at test1.c:11
+
+test1.c:11: note: create runtime check for data references *_10 and *_7
+test1.c:11: note: created 1 versioning for alias checks.
+
+test1.c:11: note: LOOP VECTORIZED.
+test1.c:7: note: vectorized 1 loops in function.

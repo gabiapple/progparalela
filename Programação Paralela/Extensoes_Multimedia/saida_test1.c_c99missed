@@ -1,0 +1,144 @@
+
+Analyzing loop at test1.c:11
+
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:7: note: vectorized 0 loops in function.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:15: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at test1.c:11
+
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:7: note: vectorized 0 loops in function.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:15: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at test1.c:11
+
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:7: note: vectorized 0 loops in function.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:15: note: not vectorized: not enough data-refs in basic block.
+
+Analyzing loop at test1.c:11
+
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:11: note: versioning for alias required: can't determine dependence between *_11 and *_7
+test1.c:11: note: not vectorized: unsupported data-type long double
+test1.c:11: note: can't determine vectorization factor.
+test1.c:7: note: vectorized 0 loops in function.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:13: note: can't determine dependence between *_11 and *_7
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *b_10(D)
+test1.c:13: note: SLP: step doesn't divide the vector-size.
+test1.c:13: note: Unknown alignment for access: *a_4(D)
+test1.c:13: note: Failed to SLP the basic block.
+test1.c:13: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test1.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test1.c:15: note: not vectorized: not enough data-refs in basic block.
