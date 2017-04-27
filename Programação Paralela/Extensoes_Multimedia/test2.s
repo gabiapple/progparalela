@@ -4,37 +4,58 @@
 	.globl	test2
 	.type	test2, @function
 test2:
-.LFB37:
+.LFB18:
 	.cfi_startproc
-	pushl	%ebp
-	.cfi_def_cfa_offset 8
-	.cfi_offset 5, -8
+	movq	%rdi, %rax
+	xorl	%r11d, %r11d
+	pushq	%rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	salq	$60, %rax
+	shrq	$63, %rax
+	testl	%eax, %eax
+	je	.L2
+	movsd	(%rdi), %xmm0
+	movb	$1, %r11b
+	addsd	(%rsi), %xmm0
+	movsd	%xmm0, (%rdi)
+.L2:
+	movl	$65536, %r10d
+	xorl	%edx, %edx
+	subl	%eax, %r10d
+	movl	%eax, %eax
+	movl	%r10d, %r9d
+	leaq	0(,%rax,8), %rcx
 	xorl	%eax, %eax
-	movl	%esp, %ebp
-	.cfi_def_cfa_register 5
-	andl	$-32, %esp
-	movl	8(%ebp), %edx
-	movl	12(%ebp), %ecx
+	shrl	%r9d
+	leal	(%r9,%r9), %ebx
+	leaq	(%rdi,%rcx), %r8
+	addq	%rsi, %rcx
 	.p2align 4,,10
 	.p2align 3
-.L3:
-	vmovupd	(%edx,%eax), %xmm1
-	vmovupd	(%ecx,%eax), %xmm0
-	vinsertf128	$0x1, 16(%edx,%eax), %ymm1, %ymm1
-	vinsertf128	$0x1, 16(%ecx,%eax), %ymm0, %ymm0
-	vaddpd	%ymm0, %ymm1, %ymm0
-	vmovupd	%xmm0, (%edx,%eax)
-	vextractf128	$0x1, %ymm0, 16(%edx,%eax)
-	addl	$32, %eax
-	cmpl	$524288, %eax
-	jne	.L3
-	vzeroupper
-	leave
-	.cfi_restore 5
-	.cfi_def_cfa 4, 4
+.L5:
+	movsd	(%rcx,%rax), %xmm0
+	addl	$1, %edx
+	movhpd	8(%rcx,%rax), %xmm0
+	addpd	(%r8,%rax), %xmm0
+	movapd	%xmm0, (%r8,%rax)
+	addq	$16, %rax
+	cmpl	%r9d, %edx
+	jb	.L5
+	cmpl	%ebx, %r10d
+	leal	(%r11,%rbx), %edx
+	je	.L1
+	movslq	%edx, %rdx
+	leaq	(%rdi,%rdx,8), %rax
+	movsd	(%rax), %xmm0
+	addsd	(%rsi,%rdx,8), %xmm0
+	movsd	%xmm0, (%rax)
+.L1:
+	popq	%rbx
+	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
-.LFE37:
+.LFE18:
 	.size	test2, .-test2
 	.ident	"GCC: (Ubuntu 4.8.4-2ubuntu1~14.04.3) 4.8.4"
 	.section	.note.GNU-stack,"",@progbits
