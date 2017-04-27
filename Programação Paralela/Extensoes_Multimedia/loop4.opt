@@ -1,0 +1,8 @@
+
+Analyzing loop at test4.c:14
+
+
+Vectorizing loop at test4.c:14
+
+test4.c:14: note: LOOP VECTORIZED.
+test4.c:7: note: vectorized 1 loops in function.
