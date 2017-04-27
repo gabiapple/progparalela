@@ -1,0 +1,18 @@
+
+Analyzing loop at test3.c:14
+
+
+Vectorizing loop at test3.c:14
+
+test3.c:14: note: === vect_do_peeling_for_alignment ===
+test3.c:14: note: niters for prolog loop: (unsigned int) -(((unsigned long) vect_pa.6_28 & 15) >> 3) & 1Setting upper bound of nb iterations for prologue loop to 0
+
+test3.c:14: note: === vect_update_inits_of_dr ===
+test3.c:14: note: === vect_do_peeling_for_loop_bound ===Setting upper bound of nb iterations for epilogue loop to 0
+
+test3.c:14: note: LOOP VECTORIZED.
+test3.c:7: note: vectorized 1 loops in function.
+
+test3.c:14: note: Turned loop into non-loop; it never loops.
+
+test3.c:7: note: Turned loop into non-loop; it never loops.

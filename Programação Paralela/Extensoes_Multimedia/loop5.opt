@@ -1,0 +1,23 @@
+
+Analyzing loop at test5.c:14
+
+test5.c:14: note: vect_recog_widen_mult_pattern: detected: 
+test5.c:14: note: pattern recognized: patt_64 = j_31 w* 65536;
+
+Analyzing loop at test5.c:16
+
+
+Vectorizing loop at test5.c:16
+
+test5.c:16: note: === vect_do_peeling_for_alignment ===
+test5.c:16: note: niters for prolog loop: (unsigned int) -(((unsigned long) vect_p.6_50 & 15) >> 3) & 1Setting upper bound of nb iterations for prologue loop to 0
+
+test5.c:16: note: === vect_update_inits_of_dr ===
+test5.c:16: note: === vect_do_peeling_for_loop_bound ===Setting upper bound of nb iterations for epilogue loop to 0
+
+test5.c:16: note: LOOP VECTORIZED.
+test5.c:7: note: vectorized 1 loops in function.
+
+test5.c:16: note: Turned loop into non-loop; it never loops.
+
+test5.c:7: note: Turned loop into non-loop; it never loops.
