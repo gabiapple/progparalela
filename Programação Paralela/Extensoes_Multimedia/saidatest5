@@ -1,0 +1,713 @@
+
+Analyzing loop at test5.c:14
+
+test5.c:14: note: ===== analyze_loop_nest =====
+test5.c:14: note: === vect_analyze_loop_form ===
+test5.c:14: note: ===== analyze_loop_nest_1 =====
+test5.c:14: note: === vect_analyze_loop_form ===
+test5.c:14: note: === get_loop_niters ===
+test5.c:14: note: ==> get_loop_niters:65536
+test5.c:14: note: Considering outer-loop vectorization.
+test5.c:14: note: === get_loop_niters ===
+test5.c:14: note: ==> get_loop_niters:65536
+test5.c:14: note: === vect_analyze_data_refs ===
+
+test5.c:14: note: analyze in outer-loop: *(x_6 + (sizetype) ((long unsigned int) j_31 * 524288))
+test5.c:14: note: 	outer base_address: x_6
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 524288
+	outer aligned to: 128
+test5.c:14: note: get vectype with 2 units of type double
+test5.c:14: note: vectype: vector(2) double
+test5.c:14: note: analyze in outer-loop: *(y_8 + (sizetype) ((long unsigned int) j_31 * 524288))
+test5.c:14: note: 	outer base_address: y_8
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 524288
+	outer aligned to: 128
+test5.c:14: note: get vectype with 2 units of type double
+test5.c:14: note: vectype: vector(2) double
+test5.c:14: note: analyze in outer-loop: *(x_6 + (sizetype) ((long unsigned int) j_31 * 524288))
+test5.c:14: note: 	outer base_address: x_6
+	outer offset from base address: 0
+	outer constant offset from base address: 0
+	outer step: 524288
+	outer aligned to: 128
+test5.c:14: note: get vectype with 2 units of type double
+test5.c:14: note: vectype: vector(2) double
+test5.c:14: note: === vect_analyze_scalar_cycles ===
+test5.c:14: note: Analyze phi: .MEM_25 = PHI <.MEM_9(D)(2), .MEM_22(6)>
+
+test5.c:14: note: Analyze phi: j_31 = PHI <0(2), j_24(6)>
+
+test5.c:14: note: Access function of PHI: {0, +, 1}_1
+test5.c:14: note: step: 1,  init: 0
+test5.c:14: note: Detected induction.
+test5.c:14: note: Analyze phi: ivtmp_66 = PHI <65536(2), ivtmp_65(6)>
+
+test5.c:14: note: Access function of PHI: {65536, +, 4294967295}_1
+test5.c:14: note: step: 4294967295,  init: 65536
+test5.c:14: note: Detected induction.
+test5.c:14: note: === vect_analyze_scalar_cycles ===
+test5.c:14: note: Analyze phi: i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:14: note: Access function of PHI: {0, +, 1}_2
+test5.c:14: note: step: 1,  init: 0
+test5.c:14: note: Detected induction.
+test5.c:14: note: Analyze phi: .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:14: note: Analyze phi: ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:14: note: Access function of PHI: {65536, +, 4294967295}_2
+test5.c:14: note: step: 4294967295,  init: 65536
+test5.c:14: note: Detected induction.
+test5.c:14: note: === vect_pattern_recog ===
+test5.c:14: note: vect_is_simple_use: operand pretmp_59
+test5.c:14: note: def_stmt: pretmp_59 = (long int) j_31;
+
+test5.c:14: note: type of def: 3.
+test5.c:14: note: vect_is_simple_use: operand j_31
+test5.c:14: note: def_stmt: j_31 = PHI <0(2), j_24(6)>
+
+test5.c:14: note: type of def: 4.
+test5.c:14: note: vect_is_simple_use: operand 65536
+test5.c:14: note: vect_recog_widen_mult_pattern: detected: 
+test5.c:14: note: get vectype with 4 units of type int
+test5.c:14: note: vectype: vector(4) int
+test5.c:14: note: get vectype with 2 units of type long int
+test5.c:14: note: vectype: vector(2) long int
+test5.c:14: note: patt_64 = j_31 w* 65536;
+
+test5.c:14: note: pattern recognized: patt_64 = j_31 w* 65536;
+
+test5.c:14: note: vect_is_simple_use: operand _14
+test5.c:14: note: def_stmt: _14 = (long unsigned int) _13;
+
+test5.c:14: note: type of def: 3.
+test5.c:14: note: === vect_mark_stmts_to_be_vectorized ===
+test5.c:14: note: init: phi relevant? .MEM_25 = PHI <.MEM_9(D)(2), .MEM_22(6)>
+
+test5.c:14: note: init: phi relevant? j_31 = PHI <0(2), j_24(6)>
+
+test5.c:14: note: init: phi relevant? ivtmp_66 = PHI <65536(2), ivtmp_65(6)>
+
+test5.c:14: note: init: stmt relevant? pretmp_59 = (long int) j_31;
+
+test5.c:14: note: init: stmt relevant? pretmp_60 = pretmp_59 * 65536;
+
+test5.c:14: note: init: phi relevant? i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:14: note: init: phi relevant? .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:14: note: init: phi relevant? ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:14: note: init: stmt relevant? _10 = (long int) i_30;
+
+test5.c:14: note: init: stmt relevant? _13 = _10 + pretmp_60;
+
+test5.c:14: note: init: stmt relevant? _14 = (long unsigned int) _13;
+
+test5.c:14: note: init: stmt relevant? _15 = _14 * 8;
+
+test5.c:14: note: init: stmt relevant? _16 = x_6 + _15;
+
+test5.c:14: note: init: stmt relevant? _17 = *_16;
+
+test5.c:14: note: init: stmt relevant? _19 = y_8 + _15;
+
+test5.c:14: note: init: stmt relevant? _20 = *_19;
+
+test5.c:14: note: init: stmt relevant? _21 = _17 + _20;
+
+test5.c:14: note: init: stmt relevant? *_16 = _21;
+
+test5.c:14: note: vec_stmt_relevant_p: stmt has vdefs.
+test5.c:14: note: mark relevant 4, live 0.
+test5.c:14: note: init: stmt relevant? i_23 = i_30 + 1;
+
+test5.c:14: note: init: stmt relevant? ivtmp_12 = ivtmp_11 - 1;
+
+test5.c:14: note: init: stmt relevant? if (ivtmp_12 != 0)
+
+test5.c:14: note: init: stmt relevant? j_24 = j_31 + 1;
+
+test5.c:14: note: init: stmt relevant? ivtmp_65 = ivtmp_66 - 1;
+
+test5.c:14: note: init: stmt relevant? if (ivtmp_65 != 0)
+
+test5.c:14: note: worklist: examine stmt: *_16 = _21;
+
+test5.c:14: note: vect_is_simple_use: operand _21
+test5.c:14: note: def_stmt: _21 = _17 + _20;
+
+test5.c:14: note: type of def: 3.
+test5.c:14: note: mark relevant 4, live 0.
+test5.c:14: note: worklist: examine stmt: _21 = _17 + _20;
+
+test5.c:14: note: vect_is_simple_use: operand _17
+test5.c:14: note: def_stmt: _17 = *_16;
+
+test5.c:14: note: type of def: 3.
+test5.c:14: note: mark relevant 4, live 0.
+test5.c:14: note: vect_is_simple_use: operand _20
+test5.c:14: note: def_stmt: _20 = *_19;
+
+test5.c:14: note: type of def: 3.
+test5.c:14: note: mark relevant 4, live 0.
+test5.c:14: note: worklist: examine stmt: _20 = *_19;
+
+test5.c:14: note: worklist: examine stmt: _17 = *_16;
+
+test5.c:14: note: === vect_analyze_dependences ===
+test5.c:14: note: dependence distance  = 0.
+test5.c:14: note: dependence distance == 0 between *_16 and *_16
+test5.c:14: note: dependence distance  = 1.
+test5.c:14: note: not vectorized, possible dependence between data-refs *_16 and *_16
+test5.c:14: note: bad data dependence.
+Analyzing loop at test5.c:16
+
+test5.c:16: note: ===== analyze_loop_nest =====
+test5.c:16: note: === vect_analyze_loop_form ===
+test5.c:16: note: === get_loop_niters ===
+test5.c:16: note: ==> get_loop_niters:65536
+test5.c:16: note: === vect_analyze_data_refs ===
+
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: === vect_analyze_scalar_cycles ===
+test5.c:16: note: Analyze phi: i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:16: note: Access function of PHI: {0, +, 1}_2
+test5.c:16: note: step: 1,  init: 0
+test5.c:16: note: Detected induction.
+test5.c:16: note: Analyze phi: .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:16: note: Analyze phi: ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:16: note: Access function of PHI: {65536, +, 4294967295}_2
+test5.c:16: note: step: 4294967295,  init: 65536
+test5.c:16: note: Detected induction.
+test5.c:16: note: === vect_pattern_recog ===
+test5.c:16: note: vect_is_simple_use: operand _14
+test5.c:16: note: def_stmt: _14 = (long unsigned int) _13;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: === vect_mark_stmts_to_be_vectorized ===
+test5.c:16: note: init: phi relevant? i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:16: note: init: phi relevant? .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:16: note: init: phi relevant? ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:16: note: init: stmt relevant? _10 = (long int) i_30;
+
+test5.c:16: note: init: stmt relevant? _13 = _10 + pretmp_60;
+
+test5.c:16: note: init: stmt relevant? _14 = (long unsigned int) _13;
+
+test5.c:16: note: init: stmt relevant? _15 = _14 * 8;
+
+test5.c:16: note: init: stmt relevant? _16 = x_6 + _15;
+
+test5.c:16: note: init: stmt relevant? _17 = *_16;
+
+test5.c:16: note: init: stmt relevant? _19 = y_8 + _15;
+
+test5.c:16: note: init: stmt relevant? _20 = *_19;
+
+test5.c:16: note: init: stmt relevant? _21 = _17 + _20;
+
+test5.c:16: note: init: stmt relevant? *_16 = _21;
+
+test5.c:16: note: vec_stmt_relevant_p: stmt has vdefs.
+test5.c:16: note: mark relevant 4, live 0.
+test5.c:16: note: init: stmt relevant? i_23 = i_30 + 1;
+
+test5.c:16: note: init: stmt relevant? ivtmp_12 = ivtmp_11 - 1;
+
+test5.c:16: note: init: stmt relevant? if (ivtmp_12 != 0)
+
+test5.c:16: note: worklist: examine stmt: *_16 = _21;
+
+test5.c:16: note: vect_is_simple_use: operand _21
+test5.c:16: note: def_stmt: _21 = _17 + _20;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: mark relevant 4, live 0.
+test5.c:16: note: worklist: examine stmt: _21 = _17 + _20;
+
+test5.c:16: note: vect_is_simple_use: operand _17
+test5.c:16: note: def_stmt: _17 = *_16;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: mark relevant 4, live 0.
+test5.c:16: note: vect_is_simple_use: operand _20
+test5.c:16: note: def_stmt: _20 = *_19;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: mark relevant 4, live 0.
+test5.c:16: note: worklist: examine stmt: _20 = *_19;
+
+test5.c:16: note: worklist: examine stmt: _17 = *_16;
+
+test5.c:16: note: === vect_analyze_dependences ===
+test5.c:16: note: dependence distance  = 0.
+test5.c:16: note: dependence distance == 0 between *_16 and *_16
+test5.c:16: note: === vect_determine_vectorization_factor ===
+test5.c:16: note: ==> examining phi: i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:16: note: ==> examining phi: .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:16: note: ==> examining phi: ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:16: note: ==> examining statement: _10 = (long int) i_30;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: _13 = _10 + pretmp_60;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: _14 = (long unsigned int) _13;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: _15 = _14 * 8;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: _16 = x_6 + _15;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: _17 = *_16;
+
+test5.c:16: note: get vectype for scalar type:  double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: nunits = 2
+test5.c:16: note: ==> examining statement: _19 = y_8 + _15;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: _20 = *_19;
+
+test5.c:16: note: get vectype for scalar type:  double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: nunits = 2
+test5.c:16: note: ==> examining statement: _21 = _17 + _20;
+
+test5.c:16: note: get vectype for scalar type:  double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: get vectype for scalar type:  double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: nunits = 2
+test5.c:16: note: ==> examining statement: *_16 = _21;
+
+test5.c:16: note: get vectype for scalar type:  double
+test5.c:16: note: get vectype with 2 units of type double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: vectype: vector(2) double
+test5.c:16: note: nunits = 2
+test5.c:16: note: ==> examining statement: i_23 = i_30 + 1;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: ivtmp_12 = ivtmp_11 - 1;
+
+test5.c:16: note: skip.
+test5.c:16: note: ==> examining statement: if (ivtmp_12 != 0)
+
+test5.c:16: note: skip.
+test5.c:16: note: vectorization factor = 2
+test5.c:16: note: === vect_analyze_data_refs_alignment ===
+test5.c:16: note: dependence distance  = 0.
+test5.c:16: note: accesses have the same alignment.dependence distance modulo vf == 0 between *_16 and *_16
+test5.c:16: note: vect_compute_data_ref_alignment:
+test5.c:16: note: can't force alignment of ref: *_16
+test5.c:16: note: vect_compute_data_ref_alignment:
+test5.c:16: note: can't force alignment of ref: *_19
+test5.c:16: note: vect_compute_data_ref_alignment:
+test5.c:16: note: can't force alignment of ref: *_16
+test5.c:16: note: === vect_analyze_data_ref_accesses ===
+test5.c:16: note: === vect_prune_runtime_alias_test_list ===
+test5.c:16: note: === vect_enhance_data_refs_alignment ===
+test5.c:16: note: Unknown misalignment, is_packed = 0
+test5.c:16: note: Unknown misalignment, is_packed = 0
+test5.c:16: note: Unknown misalignment, is_packed = 0
+test5.c:16: note: vect_can_advance_ivs_p:
+test5.c:16: note: Analyze phi: i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:16: note: Access function of PHI: {0, +, 1}_2
+test5.c:16: note: Analyze phi: .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:16: note: virtual phi. skip.
+test5.c:16: note: Analyze phi: ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:16: note: Access function of PHI: {65536, +, 4294967295}_2
+test5.c:16: note: vect_model_load_cost: unaligned supported by hardware.
+test5.c:16: note: vect_get_data_access_cost: inside_cost = 2, outside_cost = 0.
+test5.c:16: note: vect_model_store_cost: unaligned supported by hardware.
+test5.c:16: note: vect_get_data_access_cost: inside_cost = 2, outside_cost = 0.
+test5.c:16: note: Setting misalignment to -1.
+test5.c:16: note: Setting misalignment to -1.
+test5.c:16: note: Alignment of access forced using peeling.
+test5.c:16: note: Peeling for alignment will be applied.
+test5.c:16: note: Vectorizing an unaligned access.
+test5.c:16: note: === vect_analyze_slp ===
+test5.c:16: note: === vect_make_slp_decision ===
+test5.c:16: note: === vect_detect_hybrid_slp ===
+test5.c:16: note: === vect_analyze_loop_operations ===
+test5.c:16: note: examining phi: i_30 = PHI <i_23(3), 0(7)>
+
+test5.c:16: note: examining phi: .MEM_32 = PHI <.MEM_22(3), .MEM_25(7)>
+
+test5.c:16: note: examining phi: ivtmp_11 = PHI <ivtmp_12(3), 65536(7)>
+
+test5.c:16: note: ==> examining statement: _10 = (long int) i_30;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: _13 = _10 + pretmp_60;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: _14 = (long unsigned int) _13;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: _15 = _14 * 8;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: _16 = x_6 + _15;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: _17 = *_16;
+
+test5.c:16: note: vect_is_simple_use: operand *_16
+test5.c:16: note: not ssa-name.
+test5.c:16: note: use not simple.
+test5.c:16: note: vect_is_simple_use: operand *_16
+test5.c:16: note: not ssa-name.
+test5.c:16: note: use not simple.
+test5.c:16: note: vect_model_load_cost: aligned.
+test5.c:16: note: vect_model_load_cost: inside_cost = 1, prologue_cost = 0 .
+test5.c:16: note: ==> examining statement: _19 = y_8 + _15;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: _20 = *_19;
+
+test5.c:16: note: vect_is_simple_use: operand *_19
+test5.c:16: note: not ssa-name.
+test5.c:16: note: use not simple.
+test5.c:16: note: vect_is_simple_use: operand *_19
+test5.c:16: note: not ssa-name.
+test5.c:16: note: use not simple.
+test5.c:16: note: vect_model_load_cost: unaligned supported by hardware.
+test5.c:16: note: vect_model_load_cost: inside_cost = 2, prologue_cost = 0 .
+test5.c:16: note: ==> examining statement: _21 = _17 + _20;
+
+test5.c:16: note: vect_is_simple_use: operand _17
+test5.c:16: note: def_stmt: _17 = *_16;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: vect_is_simple_use: operand _20
+test5.c:16: note: def_stmt: _20 = *_19;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: === vectorizable_operation ===
+test5.c:16: note: vect_model_simple_cost: inside_cost = 1, prologue_cost = 0 .
+test5.c:16: note: ==> examining statement: *_16 = _21;
+
+test5.c:16: note: vect_is_simple_use: operand _21
+test5.c:16: note: def_stmt: _21 = _17 + _20;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: vect_model_store_cost: aligned.
+test5.c:16: note: vect_model_store_cost: inside_cost = 1, prologue_cost = 0 .
+test5.c:16: note: ==> examining statement: i_23 = i_30 + 1;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: ivtmp_12 = ivtmp_11 - 1;
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: ==> examining statement: if (ivtmp_12 != 0)
+
+test5.c:16: note: irrelevant.
+test5.c:16: note: vectorization_factor = 2, niters = 65536
+test5.c:16: note: === vect_update_slp_costs_according_to_vf ===cost model: prologue peel iters set to vf/2.cost model: epilogue peel iters set to vf/2 because peeling for alignment is unknown.
+test5.c:16: note: Cost model analysis: 
+  Vector inside of loop cost: 5
+  Vector prologue cost: 12
+  Vector epilogue cost: 4
+  Scalar iteration cost: 4
+  Scalar outside cost: 0
+  Vector outside cost: 16
+  prologue iterations: 1
+  epilogue iterations: 1
+  Calculated minimum iters for profitability: 8
+
+test5.c:16: note:   Runtime profitability threshold = 7
+
+test5.c:16: note:   Static estimate profitability threshold = 7
+
+
+Vectorizing loop at test5.c:16
+
+test5.c:16: note: === vec_transform_loop ===
+test5.c:16: note: === vect_do_peeling_for_alignment ===
+test5.c:16: note: created vect_p.6_50
+test5.c:16: note: niters for prolog loop: (unsigned int) -(((unsigned long) vect_p.6_50 & 15) >> 3) & 1
+loop at test5.c:18: if (ivtmp_54 < prolog_loop_niters.7_49)
+Setting upper bound of nb iterations for prologue loop to 0
+
+test5.c:16: note: === vect_update_inits_of_dr ===
+test5.c:16: note: === vect_do_peeling_for_loop_bound ===
+test5.c:16: note: vect_update_ivs_after_vectorizer: phi: i_30 = PHI <i_23(3), i_4(21)>
+
+test5.c:16: note: vect_update_ivs_after_vectorizer: phi: .MEM_32 = PHI <.MEM_22(3), .MEM_2(21)>
+
+test5.c:16: note: virtual phi. skip.
+test5.c:16: note: vect_update_ivs_after_vectorizer: phi: ivtmp_11 = PHI <ivtmp_12(3), ivtmp_1(21)>
+Setting upper bound of nb iterations for epilogue loop to 0
+
+test5.c:16: note: ------>vectorizing phi: i_30 = PHI <i_23(3), i_4(25)>
+
+test5.c:16: note: ------>vectorizing phi: .MEM_32 = PHI <.MEM_22(3), .MEM_2(25)>
+
+test5.c:16: note: ------>vectorizing phi: ivtmp_11 = PHI <ivtmp_12(3), ivtmp_1(25)>
+
+test5.c:16: note: ------>vectorizing statement: _10 = (long int) i_30;
+
+test5.c:16: note: ------>vectorizing statement: _13 = _10 + pretmp_60;
+
+test5.c:16: note: ------>vectorizing statement: _14 = (long unsigned int) _13;
+
+test5.c:16: note: ------>vectorizing statement: _15 = _14 * 8;
+
+test5.c:16: note: ------>vectorizing statement: _16 = x_6 + _15;
+
+test5.c:16: note: ------>vectorizing statement: _17 = *_16;
+
+test5.c:16: note: transform statement.
+test5.c:16: note: transform load. ncopies = 1
+test5.c:16: note: create vector_type-pointer variable to type: vector(2) double  vectorizing a pointer ref: *x_6 + (sizetype) ((long unsigned int) j_31 * 524288)
+test5.c:16: note: created vect_p.17_99
+test5.c:16: note: add new stmt: vect_var_.18_102 = MEM[(double *)vect_p.14_100];
+
+test5.c:16: note: ------>vectorizing statement: _19 = y_8 + _15;
+
+test5.c:16: note: ------>vectorizing statement: _20 = *_19;
+
+test5.c:16: note: transform statement.
+test5.c:16: note: transform load. ncopies = 1
+test5.c:16: note: create vector_type-pointer variable to type: vector(2) double  vectorizing a pointer ref: *y_8 + (sizetype) ((long unsigned int) j_31 * 524288)
+test5.c:16: note: created vect_p.22_107
+test5.c:16: note: add new stmt: vect_var_.23_110 = MEM[(double *)vect_p.19_108];
+
+test5.c:16: note: ------>vectorizing statement: _21 = _17 + _20;
+
+test5.c:16: note: transform statement.
+test5.c:16: note: vect_is_simple_use: operand _17
+test5.c:16: note: def_stmt: _17 = *_16;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: vect_is_simple_use: operand _20
+test5.c:16: note: def_stmt: _20 = *_19;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: transform binary/unary operation.
+test5.c:16: note: vect_get_vec_def_for_operand: _17
+test5.c:16: note: vect_is_simple_use: operand _17
+test5.c:16: note: def_stmt: _17 = *_16;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: def =  _17  def_stmt =  _17 = *_16;
+
+test5.c:16: note: vect_get_vec_def_for_operand: _20
+test5.c:16: note: vect_is_simple_use: operand _20
+test5.c:16: note: def_stmt: _20 = *_19;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: def =  _20  def_stmt =  _20 = *_19;
+
+test5.c:16: note: add new stmt: vect_var_.24_111 = vect_var_.18_102 + vect_var_.23_110;
+
+test5.c:16: note: ------>vectorizing statement: *_16 = _21;
+
+test5.c:16: note: transform statement.
+test5.c:16: note: vect_is_simple_use: operand _21
+test5.c:16: note: def_stmt: _21 = _17 + _20;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: transform store. ncopies = 1
+test5.c:16: note: vect_get_vec_def_for_operand: _21
+test5.c:16: note: vect_is_simple_use: operand _21
+test5.c:16: note: def_stmt: _21 = _17 + _20;
+
+test5.c:16: note: type of def: 3.
+test5.c:16: note: def =  _21  def_stmt =  _21 = _17 + _20;
+
+test5.c:16: note: create vector_type-pointer variable to type: vector(2) double  vectorizing a pointer ref: *x_6 + (sizetype) ((long unsigned int) j_31 * 524288)
+test5.c:16: note: created vect_p.28_116
+test5.c:16: note: add new stmt: MEM[(double *)vect_p.25_117] = vect_var_.24_111;
+
+test5.c:16: note: ------>vectorizing statement: i_23 = i_30 + 1;
+
+test5.c:16: note: ------>vectorizing statement: ivtmp_12 = ivtmp_11 - 1;
+
+test5.c:16: note: ------>vectorizing statement: vect_p.14_101 = vect_p.14_100 + 16;
+
+test5.c:16: note: ------>vectorizing statement: vect_p.19_109 = vect_p.19_108 + 16;
+
+test5.c:16: note: ------>vectorizing statement: vect_p.25_118 = vect_p.25_117 + 16;
+
+test5.c:16: note: ------>vectorizing statement: if (ivtmp_12 != 0)
+
+loop at test5.c:18: if (ivtmp_120 < bnd.10_67)
+
+test5.c:16: note: LOOP VECTORIZED.
+test5.c:7: note: vectorized 1 loops in function.
+
+test5.c:11: note: ===vect_slp_analyze_bb===
+
+test5.c:11: note: === vect_analyze_data_refs ===
+
+test5.c:11: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:18: note: ===vect_slp_analyze_bb===
+
+test5.c:18: note: === vect_analyze_data_refs ===
+
+test5.c:18: note: not vectorized: no vectype for stmt: vect_var_.18_102 = MEM[(double *)vect_p.14_100];
+ scalar_type: vector(2) double
+test5.c:18: note: === vect_pattern_recog ===
+test5.c:18: note: === vect_analyze_dependences ===
+test5.c:18: note: === vect_analyze_data_refs_alignment ===
+test5.c:18: note: === vect_analyze_data_ref_accesses ===
+test5.c:18: note: === vect_analyze_slp ===
+test5.c:18: note: Failed to SLP the basic block.
+test5.c:18: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:18: note: ===vect_slp_analyze_bb===
+
+test5.c:18: note: === vect_analyze_data_refs ===
+
+test5.c:18: note: get vectype with 2 units of type double
+test5.c:18: note: vectype: vector(2) double
+test5.c:18: note: get vectype with 2 units of type double
+test5.c:18: note: vectype: vector(2) double
+test5.c:18: note: get vectype with 2 units of type double
+test5.c:18: note: vectype: vector(2) double
+test5.c:18: note: === vect_pattern_recog ===
+test5.c:18: note: vect_is_simple_use: operand _74
+test5.c:18: note: def_stmt: _74 = (long unsigned int) _73;
+
+test5.c:18: note: type of def: 3.
+test5.c:18: note: === vect_analyze_dependences ===
+test5.c:18: note: determined dependence between *_76 and *_76
+test5.c:18: note: === vect_analyze_data_refs_alignment ===
+test5.c:18: note: vect_compute_data_ref_alignment:
+test5.c:18: note: can't force alignment of ref: *_76
+test5.c:18: note: vect_compute_data_ref_alignment:
+test5.c:18: note: can't force alignment of ref: *_78
+test5.c:18: note: vect_compute_data_ref_alignment:
+test5.c:18: note: can't force alignment of ref: *_76
+test5.c:18: note: === vect_analyze_data_ref_accesses ===
+test5.c:18: note: not consecutive access _77 = *_76;
+
+test5.c:18: note: not consecutive access _79 = *_78;
+
+test5.c:18: note: not consecutive access *_76 = _80;
+
+test5.c:18: note: === vect_analyze_slp ===
+test5.c:18: note: Failed to SLP the basic block.
+test5.c:18: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:14: note: ===vect_slp_analyze_bb===
+
+test5.c:14: note: === vect_analyze_data_refs ===
+
+test5.c:14: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:18: note: ===vect_slp_analyze_bb===
+
+test5.c:18: note: === vect_analyze_data_refs ===
+
+test5.c:18: note: get vectype with 2 units of type double
+test5.c:18: note: vectype: vector(2) double
+test5.c:18: note: get vectype with 2 units of type double
+test5.c:18: note: vectype: vector(2) double
+test5.c:18: note: get vectype with 2 units of type double
+test5.c:18: note: vectype: vector(2) double
+test5.c:18: note: === vect_pattern_recog ===
+test5.c:18: note: vect_is_simple_use: operand _37
+test5.c:18: note: def_stmt: _37 = (long unsigned int) _38;
+
+test5.c:18: note: type of def: 3.
+test5.c:18: note: === vect_analyze_dependences ===
+test5.c:18: note: determined dependence between *_35 and *_35
+test5.c:18: note: === vect_analyze_data_refs_alignment ===
+test5.c:18: note: vect_compute_data_ref_alignment:
+test5.c:18: note: misalign = 0 bytes of ref *_35
+test5.c:18: note: vect_compute_data_ref_alignment:
+test5.c:18: note: misalign = 0 bytes of ref *_33
+test5.c:18: note: vect_compute_data_ref_alignment:
+test5.c:18: note: misalign = 0 bytes of ref *_35
+test5.c:18: note: === vect_analyze_data_ref_accesses ===
+test5.c:18: note: Detected single element interleaving *_35 step 524288
+test5.c:18: note: Detected single element interleaving *_33 step 524288
+test5.c:18: note: not consecutive access *_35 = _28;
+
+test5.c:18: note: === vect_analyze_slp ===
+test5.c:18: note: Failed to SLP the basic block.
+test5.c:18: note: not vectorized: failed to find SLP opportunities in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:7: note: ===vect_slp_analyze_bb===
+
+test5.c:7: note: === vect_analyze_data_refs ===
+
+test5.c:7: note: not vectorized: not enough data-refs in basic block.
+
+test5.c:21: note: ===vect_slp_analyze_bb===
+
+test5.c:21: note: === vect_analyze_data_refs ===
+
+test5.c:21: note: not vectorized: not enough data-refs in basic block.
